@@ -40,7 +40,6 @@ namespace ExeCRUDWinForm
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblGender = new System.Windows.Forms.Label();
-            this.cmBoxGender = new System.Windows.Forms.ComboBox();
             this.dgViewMahasiswa = new System.Windows.Forms.DataGridView();
             this.mahasiswaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +52,7 @@ namespace ExeCRUDWinForm
             this.btnCancel = new System.Windows.Forms.Button();
             this.mahasiswaTableAdapter = new ExeCRUDWinForm.CRUDMahasiswaDataSetTableAdapters.MahasiswaTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtgender = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mahasiswaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cRUDMahasiswaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMahasiswa)).BeginInit();
@@ -77,6 +77,7 @@ namespace ExeCRUDWinForm
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(199, 29);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // mahasiswaBindingSource
             // 
@@ -142,18 +143,6 @@ namespace ExeCRUDWinForm
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "Gender";
             // 
-            // cmBoxGender
-            // 
-            this.cmBoxGender.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mahasiswaBindingSource, "Gender", true));
-            this.cmBoxGender.FormattingEnabled = true;
-            this.cmBoxGender.Items.AddRange(new object[] {
-            "Cowok",
-            "Cewek"});
-            this.cmBoxGender.Location = new System.Drawing.Point(175, 150);
-            this.cmBoxGender.Name = "cmBoxGender";
-            this.cmBoxGender.Size = new System.Drawing.Size(199, 28);
-            this.cmBoxGender.TabIndex = 10;
-            // 
             // dgViewMahasiswa
             // 
             this.dgViewMahasiswa.AutoGenerateColumns = false;
@@ -171,6 +160,7 @@ namespace ExeCRUDWinForm
             this.dgViewMahasiswa.RowTemplate.Height = 28;
             this.dgViewMahasiswa.Size = new System.Drawing.Size(565, 526);
             this.dgViewMahasiswa.TabIndex = 11;
+            this.dgViewMahasiswa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewMahasiswa_CellContentClick);
             // 
             // mahasiswaIDDataGridViewTextBoxColumn
             // 
@@ -259,26 +249,35 @@ namespace ExeCRUDWinForm
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(175, 542);
+            this.button1.Location = new System.Drawing.Point(175, 523);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 39);
+            this.button1.Size = new System.Drawing.Size(75, 41);
             this.button1.TabIndex = 16;
             this.button1.Text = "next";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtgender
+            // 
+            this.txtgender.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mahasiswaBindingSource, "Name", true));
+            this.txtgender.Location = new System.Drawing.Point(175, 147);
+            this.txtgender.Multiline = true;
+            this.txtgender.Name = "txtgender";
+            this.txtgender.Size = new System.Drawing.Size(199, 29);
+            this.txtgender.TabIndex = 17;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 641);
+            this.Controls.Add(this.txtgender);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgViewMahasiswa);
-            this.Controls.Add(this.cmBoxGender);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtEmail);
@@ -308,7 +307,6 @@ namespace ExeCRUDWinForm
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblGender;
-        private System.Windows.Forms.ComboBox cmBoxGender;
         private System.Windows.Forms.DataGridView dgViewMahasiswa;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
@@ -323,5 +321,6 @@ namespace ExeCRUDWinForm
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtgender;
     }
 }
